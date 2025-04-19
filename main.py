@@ -44,5 +44,4 @@ class LikeApp(App):
             else:
                 self.stars[i].background_normal = "C:/Users/user/Desktop/kivy/те що треба/beginner_git/star0.png"
                 self.stars[i].background_down = "C:/Users/user/Desktop/kivy/те що треба/beginner_git/star0.png"
-    print(rate)
 LikeApp().run()
