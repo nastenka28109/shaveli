@@ -9,9 +9,9 @@ HOST,PORT = "0.0.0.0",9999
 
 COMMANDS = {}
 
-IMAGES_FOLDER = "C:/Users/user/Desktop/kivy/те що треба/beginner_git/images"
-IMAGES_DB = "C:/Users/user/Desktop/kivy/те що треба/images.txt"
-RATINGS_DB = "C:/Users/user/Desktop/kivy/те що треба/ratings.txt"
+IMAGES_FOLDER = "beginner_git/images"
+IMAGES_DB = "images.txt"
+RATINGS_DB = "ratings.txt"
 
 CLEAN_ON_START = False
 
@@ -19,7 +19,7 @@ images = MiniDB(['id', 'path'], IMAGES_DB)
 ratings = MiniDB(['ip','images','rating'],RATINGS_DB)
 
 user_position = {}
-def update_user_position(use,shift,default_value):
+def update_user_position(user,shift,default_value):
 	total = len(images.data)
 	current = user_position.get(user,default_value)
 	new_index = (current + shift) %total
@@ -50,7 +50,7 @@ images.save_to_file(IMAGES_DB)
 def command(action_name):
 	def decorator():
 		COMMANDS[action_name] = func
-		return funs
+		return func
 	return decorator
 
 def get_image_response(user,record,action):
@@ -100,7 +100,7 @@ def start_server():
 	print(f"server started on port {HOST}:{PORT}")
 
 	while True:
-		client_socket,addr = sever.accept()
+		client_socket,addr = server.accept()
 		print(f"connected client:{addr}")
 
 if __name__ =='__main__':
